@@ -14,7 +14,7 @@ ext_modules = [
 ]
 cmdclass = {'build_ext': torch.utils.cpp_extension.BuildExtension}
 
-if CUDA_HOME is not None:
+if torch.cuda.is_available():
     ext_modules += [
         CUDAExtension('torch_scatter.scatter_cuda',
                       ['cuda/scatter.cpp', 'cuda/scatter_kernel.cu'])
